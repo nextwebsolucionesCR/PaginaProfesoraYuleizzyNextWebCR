@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora | Open Math Academy</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css?v=2.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+        }
+
+        /* Light mode improvements */
+        body:not(.dark-mode) {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        }
+
+        .calculator {
+            width: 320px;
+            padding: 20px;
+        }
+
+        .display {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-align: right;
+            padding: 10px;
+            color: var(--text-color);
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .btn-calc {
+            padding: 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text-color);
+            transition: all 0.2s;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-calc:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .btn-op {
+            background: rgba(79, 70, 229, 0.4);
+            color: white;
+        }
+
+        .btn-eq {
+            background: rgba(236, 72, 153, 0.6);
+            color: white;
+            grid-column: span 2;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Theme and Language Controls */
+        .tool-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .icon-btn,
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .icon-btn:hover,
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        .lang-btn {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span
+            data-i18n="back_button">Volver</span></a>
+
+    <!-- Theme and Language Controls -->
+    <div class="tool-controls">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button id="lang-toggle" class="lang-btn">
+            <span class="lang-text">ES</span>
+        </button>
+    </div>
+
+    <div class="calculator glass-card">
+        <input type="text" class="display" id="display" readonly>
+        <div class="buttons">
+            <button class="btn-calc" onclick="clearDisplay()">C</button>
+            <button class="btn-calc" onclick="deleteChar()"><i class="fas fa-backspace"></i></button>
+            <button class="btn-calc btn-op" onclick="appendOp('/')">÷</button>
+            <button class="btn-calc btn-op" onclick="appendOp('*')">×</button>
+
+            <button class="btn-calc" onclick="appendNum('7')">7</button>
+            <button class="btn-calc" onclick="appendNum('8')">8</button>
+            <button class="btn-calc" onclick="appendNum('9')">9</button>
+            <button class="btn-calc btn-op" onclick="appendOp('-')">-</button>
+
+            <button class="btn-calc" onclick="appendNum('4')">4</button>
+            <button class="btn-calc" onclick="appendNum('5')">5</button>
+            <button class="btn-calc" onclick="appendNum('6')">6</button>
+            <button class="btn-calc btn-op" onclick="appendOp('+')">+</button>
+
+            <button class="btn-calc" onclick="appendNum('1')">1</button>
+            <button class="btn-calc" onclick="appendNum('2')">2</button>
+            <button class="btn-calc" onclick="appendNum('3')">3</button>
+            <button class="btn-calc" onclick="appendNum('.')">.</button>
+
+            <button class="btn-calc" onclick="appendNum('0')">0</button>
+            <button class="btn-calc btn-eq" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+
+        function appendNum(num) {
+            display.value += num;
+        }
+
+        function appendOp(op) {
+            display.value += op; // Simple append, advanced logic omitted for brevity
+        }
+
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        function deleteChar() {
+            display.value = display.value.toString().slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = 'Error';
+            }
+        }
+    </script>
+
+    <!-- Main script for theme and language -->
+    <script src="js/script.js?v=2.0" defer></script>
+</body>
+
+</html>

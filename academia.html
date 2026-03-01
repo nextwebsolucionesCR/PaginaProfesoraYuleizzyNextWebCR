@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Academia | Open Math Academy</title>
+    <link rel="stylesheet" href="css/styles.css?v=2.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar glass-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo/openmathacademylogo.jpg" alt="Logo">
+                <span>Open Math <span class="accent-text">Academy</span></span>
+            </a>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button id="lang-toggle" class="lang-btn">
+                    <span class="lang-text">ES</span>
+                </button>
+                <a href="index.html" class="btn btn-sm btn-outline"><i class="fas fa-arrow-left"></i> <span
+                        data-i18n="back_button">Volver</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 100px;">
+        <section class="section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h1 class="gradient-text" data-i18n="academy_page_title">Nuestra Academia</h1>
+                    <p class="section-subtitle" data-i18n="academy_page_subtitle">El mejor lugar para aprender
+                        matemáticas en Costa Rica</p>
+                </div>
+
+                <div class="glass-card excellence-card fade-in-up">
+                    <div class="excellence-grid">
+                        <div class="excellence-content">
+                            <div class="badge-premium mb-3"><i class="fas fa-star"></i> <span
+                                    data-i18n="academy_quality_badge">Calidad Garantizada</span></div>
+                            <h2 class="gradient-text mb-3" data-i18n="academy_excellence_title">Excelencia Académica
+                            </h2>
+                            <p class="mb-4" data-i18n="academy_excellence_desc">Open Math Academy se ha consolidado como
+                                líder en la enseñanza de
+                                matemáticas, brindando
+                                apoyo personalizado a estudiantes de todos los niveles. Nuestro enfoque garantiza
+                                resultados sobresalientes y comprensión profunda.</p>
+
+                            <ul class="feature-list mb-4">
+                                <li><i class="fas fa-check-circle"></i> <span data-i18n="academy_feature_1">Clases
+                                        Personalizadas</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span data-i18n="academy_feature_2">Tecnología
+                                        Educativa</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span data-i18n="academy_feature_3">Ambiente
+                                        Seguro</span></li>
+                            </ul>
+
+                            <a href="https://www.openmathcr.com/" target="_blank" class="btn btn-primary glow-btn">
+                                <span data-i18n="academy_visit_btn">Visitar Sitio Web Oficial</span> <i
+                                    class="fas fa-external-link-alt ml-2"></i>
+                            </a>
+                        </div>
+                        <div class="excellence-image">
+                            <div class="image-floater">
+                                <img src="img/academyimages/webpage.jpg" alt="Sitio Web OMA" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center mb-4 section-title gradient-text" data-i18n="academy_gallery_title">Galería</h3>
+
+                <div class="gallery-fb-grid">
+                    <!-- Left Column: Gallery -->
+                    <div class="gallery-wrapper">
+                        <div class="academy-gallery">
+                            <div class="glass-card gallery-item">
+                                <img src="img/academyimages/oma1.jpg" alt="OMA 1" loading="lazy">
+                            </div>
+                            <div class="glass-card gallery-item">
+                                <img src="img/academyimages/oma2.jpg" alt="OMA 2" loading="lazy">
+                            </div>
+                            <div class="glass-card gallery-item">
+                                <img src="img/academyimages/oma3.jpg" alt="OMA 3" loading="lazy">
+                            </div>
+                            <div class="glass-card gallery-item">
+                                <img src="img/academyimages/oma4.jpg" alt="OMA 4" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Facebook Feed -->
+                    <div class="fb-feed-column">
+                        <div class="glass-card fb-page-wrapper">
+                            <h4 class="text-center mb-3" data-i18n="academy_facebook_title">Síguenos en Facebook</h4>
+                            <div class="fb-iframe-container">
+                                <iframe
+                                    src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fopenmathcr&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                                    width="100%" height="500" style="border:none;overflow:hidden" scrolling="no"
+                                    frameborder="0" allowfullscreen="true"
+                                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-minimal text-center p-4">
+        <p>&copy; 2025 Open Math Academy</p>
+    </footer>
+    <script src="js/script.js?v=2.0" defer></script>
+</body>
+
+</html>

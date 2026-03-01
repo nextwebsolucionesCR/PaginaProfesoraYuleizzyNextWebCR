@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora Mundial | Open Math Academy</title>
+    <link rel="stylesheet" href="css/styles.css?v=2.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* background and color controlled by styles.css for theme support */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .clock-container {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .time-display {
+            font-size: 5rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+        }
+
+        .date-display {
+            font-size: 1.5rem;
+            color: #94a3b8;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Theme and Language Controls */
+        .tool-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .icon-btn,
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .icon-btn:hover,
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .lang-btn {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Dark Mode Improvements */
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #312e81 100%);
+        }
+
+        body.dark-mode .time-display {
+            background: linear-gradient(90deg, #818cf8, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        body.dark-mode .date-display {
+            color: #c7d2fe;
+        }
+
+        body.dark-mode .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> <span
+            data-i18n="back_button">Volver</span></a>
+
+    <!-- Theme and Language Controls -->
+    <div class="tool-controls">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark Mode">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button id="lang-toggle" class="lang-btn">
+            <span class="lang-text">ES</span>
+        </button>
+    </div>
+
+    <div class="glass-card clock-container">
+        <h2 class="mb-4">Hora Local (Costa Rica)</h2>
+        <div class="time-display" id="time">00:00:00</div>
+        <div class="date-display" id="date">Cargando...</div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('es-CR');
+            const dateString = now.toLocaleDateString('es-CR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            document.getElementById('time').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+    <!-- Main script for theme and language -->
+    <script src="js/script.js?v=2.0" defer></script>
+</body>
+
+</html>
